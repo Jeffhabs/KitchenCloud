@@ -1,0 +1,6 @@
+framework module Pods_KitchenCloud {
+  umbrella header "Pods-KitchenCloud-umbrella.h"
+
+  export *
+  module * { export * }
+}

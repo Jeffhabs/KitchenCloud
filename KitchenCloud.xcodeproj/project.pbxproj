@@ -7,21 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381BBA441E8B63CD00BB7653 /* Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381BBA431E8B63CD00BB7653 /* Members.swift */; };
+		384E135E1E89D07E0020CDBF /* ItemsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E135D1E89D07E0020CDBF /* ItemsListViewController.swift */; };
+		3891A3391E8C926A0052D3E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A3381E8C926A0052D3E9 /* HomeViewController.swift */; };
+		3891A33B1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A33A1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift */; };
+		3891A33D1E8CC0310052D3E9 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A33C1E8CC0310052D3E9 /* GroupCell.swift */; };
+		38B890921E8DC4A6008F6F7A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B890911E8DC4A6008F6F7A /* Groups.swift */; };
 		38BF57721E83330A0097C4C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57711E83330A0097C4C6 /* AppDelegate.swift */; };
-		38BF57741E83330A0097C4C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57731E83330A0097C4C6 /* ViewController.swift */; };
+		38BF57741E83330A0097C4C6 /* RegisterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57731E83330A0097C4C6 /* RegisterLoginViewController.swift */; };
 		38BF57771E83330A0097C4C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BF57751E83330A0097C4C6 /* Main.storyboard */; };
 		38BF57791E83330A0097C4C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38BF57781E83330A0097C4C6 /* Assets.xcassets */; };
 		38BF577C1E83330A0097C4C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38BF577A1E83330A0097C4C6 /* LaunchScreen.storyboard */; };
+		38BF57841E8333AE0097C4C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38BF57831E8333AE0097C4C6 /* GoogleService-Info.plist */; };
+		38BF57881E8340B20097C4C6 /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38BF57871E8340B20097C4C6 /* DroidSans.ttf */; };
+		38BF578B1E8345150097C4C6 /* CreateGroupNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF578A1E8345150097C4C6 /* CreateGroupNameViewController.swift */; };
+		38BF57901E839C400097C4C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF578F1E839C400097C4C6 /* User.swift */; };
+		38BF57921E83AD1B0097C4C6 /* CreateUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57911E83AD1A0097C4C6 /* CreateUserNameViewController.swift */; };
+		38BF57941E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57931E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift */; };
+		38BF57961E84CCD40097C4C6 /* GroupListContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57951E84CCD40097C4C6 /* GroupListContainerVC.swift */; };
+		38BF57981E85D38F0097C4C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57971E85D38F0097C4C6 /* LoginViewController.swift */; };
+		38BF579A1E85ED2D0097C4C6 /* PendingInvites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57991E85ED2D0097C4C6 /* PendingInvites.swift */; };
+		56991D910BF3CC3B0A07F452 /* Pods_KitchenCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 101EB42F8AE05039429F335A /* Pods_KitchenCloud.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101EB42F8AE05039429F335A /* Pods_KitchenCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KitchenCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		381BBA431E8B63CD00BB7653 /* Members.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Members.swift; sourceTree = "<group>"; };
+		384E135D1E89D07E0020CDBF /* ItemsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsListViewController.swift; sourceTree = "<group>"; };
+		3891A3381E8C926A0052D3E9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3891A33A1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionContainerVC.swift; sourceTree = "<group>"; };
+		3891A33C1E8CC0310052D3E9 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		38B890911E8DC4A6008F6F7A /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		38BF576E1E83330A0097C4C6 /* KitchenCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BF57711E83330A0097C4C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38BF57731E83330A0097C4C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38BF57731E83330A0097C4C6 /* RegisterLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLoginViewController.swift; sourceTree = "<group>"; };
 		38BF57761E83330A0097C4C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38BF57781E83330A0097C4C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38BF577B1E83330A0097C4C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38BF577D1E83330A0097C4C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38BF57831E8333AE0097C4C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		38BF57851E8333D00097C4C6 /* KitchenCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KitchenCloud.entitlements; sourceTree = "<group>"; };
+		38BF57871E8340B20097C4C6 /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSans.ttf; sourceTree = "<group>"; };
+		38BF578A1E8345150097C4C6 /* CreateGroupNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupNameViewController.swift; sourceTree = "<group>"; };
+		38BF578F1E839C400097C4C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		38BF57911E83AD1A0097C4C6 /* CreateUserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserNameViewController.swift; sourceTree = "<group>"; };
+		38BF57931E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEmailAndPasswordViewController.swift; sourceTree = "<group>"; };
+		38BF57951E84CCD40097C4C6 /* GroupListContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListContainerVC.swift; sourceTree = "<group>"; };
+		38BF57971E85D38F0097C4C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		38BF57991E85ED2D0097C4C6 /* PendingInvites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingInvites.swift; sourceTree = "<group>"; };
+		83C87F7707D844E25192FCE4 /* Pods-KitchenCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-KitchenCloud/Pods-KitchenCloud.release.xcconfig"; sourceTree = "<group>"; };
+		FC058D3FAEBA315C788D9B73 /* Pods-KitchenCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KitchenCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KitchenCloud/Pods-KitchenCloud.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +64,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56991D910BF3CC3B0A07F452 /* Pods_KitchenCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0520629418CA99912D734776 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC058D3FAEBA315C788D9B73 /* Pods-KitchenCloud.debug.xcconfig */,
+				83C87F7707D844E25192FCE4 /* Pods-KitchenCloud.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		38BF57651E83330A0097C4C6 = {
 			isa = PBXGroup;
 			children = (
 				38BF57701E83330A0097C4C6 /* KitchenCloud */,
 				38BF576F1E83330A0097C4C6 /* Products */,
+				0520629418CA99912D734776 /* Pods */,
+				3B53D31BF25934474CE3CFA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +101,62 @@
 		38BF57701E83330A0097C4C6 /* KitchenCloud */ = {
 			isa = PBXGroup;
 			children = (
+				38BF57851E8333D00097C4C6 /* KitchenCloud.entitlements */,
+				38BF578E1E839C190097C4C6 /* Model */,
+				38BF57891E8344FF0097C4C6 /* ViewControllers */,
+				38BF57861E833EEC0097C4C6 /* Fonts */,
 				38BF57711E83330A0097C4C6 /* AppDelegate.swift */,
-				38BF57731E83330A0097C4C6 /* ViewController.swift */,
 				38BF57751E83330A0097C4C6 /* Main.storyboard */,
 				38BF57781E83330A0097C4C6 /* Assets.xcassets */,
 				38BF577A1E83330A0097C4C6 /* LaunchScreen.storyboard */,
+				38BF57831E8333AE0097C4C6 /* GoogleService-Info.plist */,
 				38BF577D1E83330A0097C4C6 /* Info.plist */,
 			);
 			path = KitchenCloud;
+			sourceTree = "<group>";
+		};
+		38BF57861E833EEC0097C4C6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				38BF57871E8340B20097C4C6 /* DroidSans.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		38BF57891E8344FF0097C4C6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				38BF57731E83330A0097C4C6 /* RegisterLoginViewController.swift */,
+				38BF578A1E8345150097C4C6 /* CreateGroupNameViewController.swift */,
+				38BF57911E83AD1A0097C4C6 /* CreateUserNameViewController.swift */,
+				38BF57931E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift */,
+				38BF57951E84CCD40097C4C6 /* GroupListContainerVC.swift */,
+				38BF57971E85D38F0097C4C6 /* LoginViewController.swift */,
+				384E135D1E89D07E0020CDBF /* ItemsListViewController.swift */,
+				3891A3381E8C926A0052D3E9 /* HomeViewController.swift */,
+				3891A33A1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift */,
+				3891A33C1E8CC0310052D3E9 /* GroupCell.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		38BF578E1E839C190097C4C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				38BF578F1E839C400097C4C6 /* User.swift */,
+				38BF57991E85ED2D0097C4C6 /* PendingInvites.swift */,
+				381BBA431E8B63CD00BB7653 /* Members.swift */,
+				38B890911E8DC4A6008F6F7A /* Groups.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3B53D31BF25934474CE3CFA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				101EB42F8AE05039429F335A /* Pods_KitchenCloud.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38BF57801E83330A0097C4C6 /* Build configuration list for PBXNativeTarget "KitchenCloud" */;
 			buildPhases = (
+				1ECD05E5DE54F8C5D9D15CF0 /* [CP] Check Pods Manifest.lock */,
 				38BF576A1E83330A0097C4C6 /* Sources */,
 				38BF576B1E83330A0097C4C6 /* Frameworks */,
 				38BF576C1E83330A0097C4C6 /* Resources */,
+				DE210C77B62F5C684B030F2E /* [CP] Embed Pods Frameworks */,
+				5E4308CD4A6187310082CEB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -98,6 +196,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = JX9E4CJ52Q;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,6 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38BF577C1E83330A0097C4C6 /* LaunchScreen.storyboard in Resources */,
+				38BF57841E8333AE0097C4C6 /* GoogleService-Info.plist in Resources */,
+				38BF57881E8340B20097C4C6 /* DroidSans.ttf in Resources */,
 				38BF57791E83330A0097C4C6 /* Assets.xcassets in Resources */,
 				38BF57771E83330A0097C4C6 /* Main.storyboard in Resources */,
 			);
@@ -132,12 +237,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1ECD05E5DE54F8C5D9D15CF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E4308CD4A6187310082CEB9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KitchenCloud/Pods-KitchenCloud-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE210C77B62F5C684B030F2E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KitchenCloud/Pods-KitchenCloud-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		38BF576A1E83330A0097C4C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38BF57741E83330A0097C4C6 /* ViewController.swift in Sources */,
+				3891A33B1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift in Sources */,
+				38BF57901E839C400097C4C6 /* User.swift in Sources */,
+				38BF57961E84CCD40097C4C6 /* GroupListContainerVC.swift in Sources */,
+				38BF578B1E8345150097C4C6 /* CreateGroupNameViewController.swift in Sources */,
+				381BBA441E8B63CD00BB7653 /* Members.swift in Sources */,
+				38BF57941E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift in Sources */,
+				38BF57981E85D38F0097C4C6 /* LoginViewController.swift in Sources */,
+				3891A33D1E8CC0310052D3E9 /* GroupCell.swift in Sources */,
+				38B890921E8DC4A6008F6F7A /* Groups.swift in Sources */,
+				384E135E1E89D07E0020CDBF /* ItemsListViewController.swift in Sources */,
+				38BF57741E83330A0097C4C6 /* RegisterLoginViewController.swift in Sources */,
+				38BF579A1E85ED2D0097C4C6 /* PendingInvites.swift in Sources */,
+				38BF57921E83AD1B0097C4C6 /* CreateUserNameViewController.swift in Sources */,
+				3891A3391E8C926A0052D3E9 /* HomeViewController.swift in Sources */,
 				38BF57721E83330A0097C4C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +423,10 @@
 		};
 		38BF57811E83330A0097C4C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC058D3FAEBA315C788D9B73 /* Pods-KitchenCloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KitchenCloud/KitchenCloud.entitlements;
 				DEVELOPMENT_TEAM = JX9E4CJ52Q;
 				INFOPLIST_FILE = KitchenCloud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -270,8 +438,10 @@
 		};
 		38BF57821E83330A0097C4C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83C87F7707D844E25192FCE4 /* Pods-KitchenCloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KitchenCloud/KitchenCloud.entitlements;
 				DEVELOPMENT_TEAM = JX9E4CJ52Q;
 				INFOPLIST_FILE = KitchenCloud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -300,6 +470,7 @@
 				38BF57821E83330A0097C4C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
