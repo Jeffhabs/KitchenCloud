@@ -14,6 +14,7 @@ import Firebase
 class GroupListContainerVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     let toItemListView = "toItemListView"
+    var groups = [Groups]()
     
     let tableView: UITableView = {
         let tv = UITableView()
@@ -26,7 +27,9 @@ class GroupListContainerVC: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        observeUserGroups()
         print("GroupListContainerView loaded")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,18 +40,7 @@ class GroupListContainerVC: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("GroupListContainerView will disapper")
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
-        cell.groupNameLabel.text = "Testing Group Name"
-        return cell
     }
 
     private func setupTableView() {
@@ -61,13 +53,74 @@ class GroupListContainerVC: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
     }
     
-   /*
-    override func tableView func numberOfSections(in tableView: UITableView) -> Int {
+    var groupIds = [String]()
+    
+    // MARK: Firebase Observer methods
+    // FIXME: add .childRemoved??
+    func observeUserGroups() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        let ref = FIRDatabase.database().reference().child("users").child(uid).child("groups")
+        ref.observe(.childAdded, with: { (snapshot) in
+            //print(snapshot)
+            let groupid = snapshot.key
+            self.groupIds.append(groupid)
+            
+            let groupReference = FIRDatabase.database().reference().child("groups").child(groupid)
+            groupReference.observe(.value, with: { (snapshot) in
+                //print(snapshot)
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    let groups = Groups()
+                    groups.setValuesForKeys(dictionary)
+                    self.groups.append(groups)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
+    }
+    
+    // MARK: UITableView delegate methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.groups.count
     }
-    */
+    
+    var memberKeys = [String]()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        
+        cell.groupNameLabel.text = self.groups[indexPath.row].name
+        memberKeys = Array(self.groups[indexPath.row].members!.keys)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toItemList", sender: tableView)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            if segue.identifier == "toItemList" {
+                let dvc = segue.destination as! ItemsListViewController
+                dvc.groupId = self.groupIds[indexPath.row]
+                dvc.groupName = self.groups[indexPath.row].name
+            }
+        }
+    }
+    
+    func observeGroupMembers() {
+        for items in self.groups {
+            self.memberKeys = Array(items.members!.keys)
+        }
+        print(self.memberKeys)
+    }
+
     
     // MARK: UITableView Delegate methods
     /*

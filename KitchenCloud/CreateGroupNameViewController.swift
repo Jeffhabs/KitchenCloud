@@ -22,10 +22,16 @@ class CreateGroupNameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         groupNameTextField.becomeFirstResponder()
         groupNameTextField.delegate = self
+        
         self.navigationItem.leftBarButtonItem?.title = " "
         if (groupNameTextField.text?.isEmpty)! {
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     

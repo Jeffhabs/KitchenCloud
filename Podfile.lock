@@ -32,11 +32,13 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - SDCAlertView (7.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - SDCAlertView (~> 7.1)
 
 SPEC CHECKSUMS:
   Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
@@ -47,7 +49,8 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  SDCAlertView: b92fd1f00e522e18a062005e15a16c1e8295c5b5
 
-PODFILE CHECKSUM: b8283a1d544ec7528e2acf42b1a0099504ec376c
+PODFILE CHECKSUM: e73eb84ae5d442adb0b57008198ea61cae705c59
 
 COCOAPODS: 1.2.0

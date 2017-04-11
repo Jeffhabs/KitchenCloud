@@ -19,11 +19,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTextDelegates()
         
         //Open keyboard on entry
         emailTextField.becomeFirstResponder()
-        
-        setupTextDelegates()
         
         //Disable 'Next' button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
@@ -95,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Next button logs user in
     
     var pendingItems: [PendingInvites] = []
-    var user: User?
+    //var user: User?
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         let ref = FIRDatabase.database().reference()
@@ -140,10 +139,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let test = userGroupRef.child(i.group)
                         ref.child("groups").child(i.group).observeSingleEvent(of: .value, with: { (snapshot) in
                             let value = snapshot.value as? [String: Any] ?? [:]
-                            let groupName = value["groupName"] as? String ?? ""
+                            let groupName = value["name"] as? String ?? ""
                             test.setValue(["name": groupName])
                         })
                         
+                        // FIXME: This needs to be updated and fixed with Fanout pattern
                         //we also need to update members in our groups collection
                         //add user<> and user email to members
                         print("Current User Id: \(currUserId!)")
@@ -166,10 +166,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             })
         })
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Logout"
-        navigationItem.backBarButtonItem = backItem
-    }
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let backItem = UIBarButtonItem()
+//        if let font = UIFont(name: "Droid Sans", size: 17) {
+//            backItem.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+//            backItem.title = "Logout!"
+//            navigationItem.leftBarButtonItem = backItem
+//        }
+//    }
+//    func handleLogout() {
+//        print("handleLogout called in loginViewController")
+//        do {
+//            try FIRAuth.auth()?.signOut()
+//        } catch let logoutError {
+//            print(logoutError)
+//        }
+//        let loginController = LoginViewController()
+//        present(loginController, animated: true, completion: nil)
+//    }
+
 }

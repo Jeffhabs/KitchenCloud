@@ -15,13 +15,8 @@ class HomeViewController: UIViewController {
     var groups = [Groups]()
     var members: [Members] = []
     
-    @IBOutlet var groupListContainer: UIView!
-    @IBOutlet var recipesViewContainer: UIView!
-    
     @IBOutlet var segmentControl: UISegmentedControl!
     
-    let currUser = FIRAuth.auth()?.currentUser?.uid
-    let userRef = FIRDatabase.database().reference(withPath: "users")
     let groupsRef = FIRDatabase.database().reference(withPath: "groups")
     
     private lazy var groupListContainerViewController: GroupListContainerVC = {
@@ -42,51 +37,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("homeviewcontroller")
-        setupView()
-        updateView()
-        observeUserGroups() { results in
-            //self.groups.a
-            self.groups = results
-            for group in self.groups {
-
-            }
-        }
-        
-        //print(self.groups)
-    }
-    
-    private func setupView() {
         setupSegmentedController()
+        updateView()
     }
     
-    func observeUserGroups(completion: @escaping ([Groups]) -> Void) {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
-        let ref = FIRDatabase.database().reference().child("users").child(uid).child("groups")
-        ref.observe(.childAdded, with: { (snapshot) in
-            //print(snapshot)
-            let groupid = snapshot.key
-            let groupReference = FIRDatabase.database().reference().child("groups").child(groupid)
-            
-            groupReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                //print(snapshot)
-                var groupArray = [Groups]()
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let groups = Groups()
-                    groups.setValuesForKeys(dictionary)
-                    //print(groups.name!)
-                    //print(groups.members!)
-                    //self.groups.append(groups)
-                    groupArray.append(groups)
-                    //self.groups.append(groups)
-                }
-                completion(groupArray)
-                
-            }, withCancel: nil)
-            
-        }, withCancel: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
-    
+   
     fileprivate func add(asChildViewController viewController: UIViewController) {
         addChildViewController(viewController)
         
@@ -96,7 +55,6 @@ class HomeViewController: UIViewController {
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //viewController.didMove(toParentViewController: self)
-        
     }
     
     private func remove(asChildViewController viewController: UIViewController) {
@@ -109,7 +67,6 @@ class HomeViewController: UIViewController {
         // Notify Child View Controller
         viewController.removeFromParentViewController()
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -138,8 +95,19 @@ class HomeViewController: UIViewController {
             add(asChildViewController: recipeCollectionViewContoller)
         }
     }
+        
+    @IBAction func handleLogout(_ sender: Any) {
+        print("handleLogout called in HomeViewController")
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
     
     // MARK: Add button (create group)
+    // FIXME: Do not add group if group name is nil or empty
     var groupID: String?
     @IBAction func createGroup(_ sender: Any) {
         let alert = UIAlertController(title: "Group Name",
@@ -167,8 +135,9 @@ class HomeViewController: UIViewController {
             
             self.groupID = groupRef.key
             
-            //let groupListRef = groupRef.child("list")
             let groupMembersRef = groupRef.child("members")
+            let groupListRef = groupRef.child("list")
+            groupListRef.updateChildValues([:])
             
             //ADD uid to members-child
             groupMembersRef.updateChildValues([uid : 1], withCompletionBlock: { (err, ref) in
@@ -197,6 +166,19 @@ class HomeViewController: UIViewController {
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toGroupList" {
+            let dvc = segue.destination as? GroupListContainerVC
+            dvc?.groups = self.groups
+            let backItem = UIBarButtonItem()
+            if let font = UIFont(name: "Droid Sans", size: 17) {
+                backItem.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+                backItem.title = ""
+                navigationItem.backBarButtonItem = backItem
+            }
+        }
     }
 
 }

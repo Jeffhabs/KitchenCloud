@@ -7,21 +7,36 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterLoginViewController: UIViewController {
     
     let toCreateGroupName = "toCreateGroup"
     let toLogin = "toLogin"
+    let loggedIn = "loggedIn"
 
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var registerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfUserIsLoggedIn()
         registerButton.layer.cornerRadius = 8
         registerButton.layer.masksToBounds = true
-
     }
     
+    func checkIfUserIsLoggedIn() {
+        if FIRAuth.auth()?.currentUser?.uid == nil {
+            //perform(#selector(handleLogout), with: nil, afterDelay: 0)
+            print("no user currently logged in")
+        } else {
+            perform(#selector(handleLoggedIn), with: nil, afterDelay: 0)
+        }
+    }
+    
+    func handleLoggedIn() {
+        self.performSegue(withIdentifier: self.loggedIn, sender: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,8 +48,6 @@ class RegisterLoginViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
  
-    
-    
     @IBAction func registerButtonPressed(_ sender: Any) {
         
         self.performSegue(withIdentifier: self.toCreateGroupName, sender: nil)
@@ -43,5 +56,20 @@ class RegisterLoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: self.toLogin, sender: nil)
     }
+   
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let backItem = UIBarButtonItem()
+//        if (segue.identifier == "loggedIn") {
+//            if let font = UIFont(name: "Droid Sans", size: 17) {
+//                backItem.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
+//                backItem.title = "Logout"
+//                backItem.action = #selector(handleLogout)
+//                navigationItem.backBarButtonItem = backItem
+//            }
+//        }
+//    }
+//    
+
+
 }
 

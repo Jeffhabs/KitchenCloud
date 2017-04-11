@@ -15,7 +15,7 @@ class CreateEmailAndPasswordViewController: UIViewController, UITextFieldDelegat
     var groupName: String!
     
     
-    let toGroupList = "toGroupList"
+    let toHomeView = "toHome"
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var reEnterPasswordTextField: UITextField!
@@ -183,7 +183,6 @@ class CreateEmailAndPasswordViewController: UIViewController, UITextFieldDelegat
             
             let groupID = groupRef.key
             
-            //let groupListRef = groupRef.child("list")
             let groupMembersRef = groupRef.child("members")
             groupMembersRef.updateChildValues([createrUid! : 1], withCompletionBlock: { (err, ref) in
                 if err != nil {
@@ -192,45 +191,17 @@ class CreateEmailAndPasswordViewController: UIViewController, UITextFieldDelegat
                 }
             })
             
-            /*
-            //ADD uid and email to members-child
-            let mValues = ["email": email, "username": self.userName]
-            groupMembersRef.updateChildValues(mValues) { (err, ref) in
-                if err != nil {
-                    print(err!)
-                    return
-                }
-                
-                //success
-            }
-            */
-            
-            //print(groupID)
-            
             //we also need to add the groupName and group<guid> to users->group
             let userGroups = userRef.child("groups")
-            /*
-            let userGroupInfo = ["name": self.groupName]
-            userGroups.setValue(userGroupInfo) { (err, ref) in
-                if err != nil {
-                    print("error setting user-groups %s", err!)
-                }
-                //success
-                
-            }
-             */
 
-            
             userGroups.updateChildValues([groupID : 1], withCompletionBlock: { (err, ref) in
                 if err != nil {
                     print(err!)
                     return
                 }
                 //success
-                
             })
-            self.performSegue(withIdentifier: self.toGroupList, sender: nil)
-
+            self.performSegue(withIdentifier: self.toHomeView, sender: nil)
         })
     }
 }

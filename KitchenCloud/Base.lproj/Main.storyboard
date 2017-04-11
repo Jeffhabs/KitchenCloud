@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DTu-7H-5d1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DTu-7H-5d1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -78,6 +78,7 @@
                         <outlet property="registerButton" destination="o6K-OA-ORn" id="3P3-Qb-6ma"/>
                         <segue destination="0z1-7e-7Td" kind="show" identifier="toLogin" id="D4d-J2-p2b"/>
                         <segue destination="moY-nS-XSR" kind="show" identifier="toCreateGroup" id="ECM-6r-ZO9"/>
+                        <segue destination="rDQ-Jj-91F" kind="show" identifier="loggedIn" id="ShT-X1-uw7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,7 +127,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5TD-6L-GDb">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="ndf-yl-zO0">
+                        <barButtonItem key="rightBarButtonItem" title="Next" style="plain" id="ndf-yl-zO0">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="EfC-UX-NHJ" kind="show" identifier="toCreateUserName" id="URc-nz-dco"/>
@@ -283,7 +284,7 @@
                         <outlet property="emailTextField" destination="scL-oo-xOJ" id="Kne-Lv-V9l"/>
                         <outlet property="passwordTextField" destination="RVq-zQ-tJf" id="Pgw-wc-hmL"/>
                         <outlet property="reEnterPasswordTextField" destination="0FA-ZN-Lws" id="TnU-xh-ETq"/>
-                        <segue destination="rDQ-Jj-91F" kind="show" identifier="toGroupList" id="BvS-VN-y4S"/>
+                        <segue destination="rDQ-Jj-91F" kind="show" identifier="toHome" id="BvS-VN-y4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FP-cH-In3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -300,11 +301,11 @@
             <objects>
                 <tableViewController id="x7N-M9-m6v" customClass="ItemsListViewController" customModule="KitchenCloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9zl-SV-HTs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i5K-oe-Dkk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="i5K-oe-Dkk">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i5K-oe-Dkk" id="ceT-9K-3wo">
@@ -321,13 +322,49 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="wYN-8a-cJS">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" systemItem="add" id="l3B-jJ-AzH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" systemItem="add" id="l3B-jJ-AzH">
+                            <connections>
+                                <action selector="addGroceryItem:" destination="x7N-M9-m6v" id="S8F-K9-N2X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="a2N-Uy-kur" kind="show" identifier="toGroupMembers" id="R7c-Sc-s80"/>
+                        <segue destination="UzN-RX-abL" kind="show" identifier="toAddItem" id="k5f-Ag-EJT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q02-Is-nrD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="2207"/>
+            <point key="canvasLocation" x="2225" y="2195"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="uI7-37-n1w">
+            <objects>
+                <tableViewController id="a2N-Uy-kur" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gSl-zw-mbe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pfs-wO-1lx">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pfs-wO-1lx" id="Zxy-0b-WTG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a2N-Uy-kur" id="U2l-7o-L4U"/>
+                            <outlet property="delegate" destination="a2N-Uy-kur" id="Yhq-g2-8ar"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwW-1D-EHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2225" y="2858"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="zgW-Nl-puZ">
@@ -344,7 +381,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHr-fc-w1f">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <connections>
-                                    <segue destination="JJl-83-WuV" kind="embed" identifier="" id="8Z1-fa-BEN"/>
+                                    <segue destination="JJl-83-WuV" kind="embed" identifier="toGroupList" id="8Z1-fa-BEN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCI-MZ-mLy">
@@ -369,6 +406,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="m5D-v4-FdR">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="List-Icon" id="koa-eU-htb">
+                            <connections>
+                                <action selector="handleLogout:" destination="rDQ-Jj-91F" id="vLG-tD-9cT"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="g02-oC-DCx">
                             <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -384,8 +426,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="groupListContainer" destination="aHr-fc-w1f" id="Cza-c9-OPx"/>
-                        <outlet property="recipesViewContainer" destination="VCI-MZ-mLy" id="Zyz-kV-vYE"/>
                         <outlet property="segmentControl" destination="g02-oC-DCx" id="AHe-Ch-Tbl"/>
                     </connections>
                 </viewController>
@@ -500,6 +540,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="x7N-M9-m6v" kind="show" identifier="toItemList" id="2o7-r6-WdK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHG-wn-Evc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -523,9 +566,151 @@
             </objects>
             <point key="canvasLocation" x="3058" y="1522"/>
         </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="cZO-Bj-kz4">
+            <objects>
+                <viewController id="UzN-RX-abL" customClass="AddItemViewController" customModule="KitchenCloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y2S-aS-MwH"/>
+                        <viewControllerLayoutGuide type="bottom" id="OmU-L0-f2X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="35s-gD-NTn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="NNH-Ir-wGV">
+                                <rect key="frame" x="16" y="8" width="343" height="309"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="3Ms-ZH-NEC">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4Y-01-suq">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="50"/>
+                                                <color key="backgroundColor" red="0.22498545049999999" green="0.66422730679999997" blue="0.95833283660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new item name" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MMm-Ex-KfV">
+                                                <rect key="frame" x="79" y="0.0" width="264" height="50"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="pvs-3u-UHg"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9tQ-Wb-xRJ">
+                                        <rect key="frame" x="0.0" y="65" width="343" height="29"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW9-No-aC0">
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="29"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zkx-pf-6GT">
+                                                <rect key="frame" x="80" y="0.0" width="94" height="29"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="stepperTouched:" destination="UzN-RX-abL" eventType="valueChanged" id="V31-Pz-31m"/>
+                                                </connections>
+                                            </stepper>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-hi-9Gc">
+                                                <rect key="frame" x="182" y="0.0" width="65.5" height="29"/>
+                                                <color key="backgroundColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" contentMode="left" text="pcs." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unz-hR-EYh">
+                                                <rect key="frame" x="255.5" y="0.0" width="30.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lb." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llT-MF-DoE">
+                                                <rect key="frame" x="294" y="0.0" width="19" height="29"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </label>
+                                            <label opaque="NO" contentMode="left" text="oz." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-1R-kIM">
+                                                <rect key="frame" x="321" y="0.0" width="22" height="29"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                                <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-x4-VW7">
+                                        <rect key="frame" x="0.0" y="109" width="343" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" text="Misc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmb-pS-lO4">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
+                                                <color key="backgroundColor" red="0.17556229230000001" green="0.53218281270000001" blue="0.76499098539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="V4d-v1-d38"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Cxj-r9-JgG">
+                                                <rect key="frame" x="0.0" y="35" width="343" height="165"/>
+                                                <color key="backgroundColor" red="0.22498545049999999" green="0.66422730679999997" blue="0.95833283660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.22498545049999999" green="0.66422730679999997" blue="0.95833283660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="9Gu-xP-jzZ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22498545049999999" green="0.66422730679999997" blue="0.95833283660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.22498545049999999" green="0.66422730679999997" blue="0.95833283660000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="NNH-Ir-wGV" secondAttribute="trailing" id="44E-LW-2GO"/>
+                            <constraint firstItem="NNH-Ir-wGV" firstAttribute="leading" secondItem="35s-gD-NTn" secondAttribute="leadingMargin" id="9Sf-S0-oBR"/>
+                            <constraint firstItem="NNH-Ir-wGV" firstAttribute="top" secondItem="35s-gD-NTn" secondAttribute="top" constant="8" id="Lad-Nx-5eu"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="EGG-Tt-V0l" appends="YES" id="Nqr-Tg-Ol9"/>
+                        </connections>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="Kmb-pS-lO4" id="lXj-oN-xSs"/>
+                        <outlet property="itemTextField" destination="MMm-Ex-KfV" id="met-0m-dsl"/>
+                        <outlet property="ozLabel" destination="mAh-1R-kIM" id="R2S-tb-xSD"/>
+                        <outlet property="pcsLabel" destination="Unz-hR-EYh" id="J0Y-7V-K30"/>
+                        <outlet property="pickerView" destination="Cxj-r9-JgG" id="lcs-YQ-aS3"/>
+                        <outlet property="poundsLabel" destination="llT-MF-DoE" id="I2p-ad-kHS"/>
+                        <outlet property="stepper" destination="Zkx-pf-6GT" id="sGz-b8-dw9"/>
+                        <outlet property="stepperLabel" destination="Z1M-hi-9Gc" id="jBB-Yg-67A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CfB-pi-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EGG-Tt-V0l">
+                    <connections>
+                        <action selector="dissmissKeyboard:" destination="UzN-RX-abL" id="vNr-ku-Pzm"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3057" y="2196"/>
+        </scene>
     </scenes>
     <resources>
         <image name="KitchenCloud Logo" width="166" height="100"/>
+        <image name="List-Icon" width="20" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d76-wt-ZmQ"/>
