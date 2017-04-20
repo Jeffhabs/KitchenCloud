@@ -56,20 +56,5 @@ class RegisterLoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: self.toLogin, sender: nil)
     }
-   
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let backItem = UIBarButtonItem()
-//        if (segue.identifier == "loggedIn") {
-//            if let font = UIFont(name: "Droid Sans", size: 17) {
-//                backItem.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
-//                backItem.title = "Logout"
-//                backItem.action = #selector(handleLogout)
-//                navigationItem.backBarButtonItem = backItem
-//            }
-//        }
-//    }
-//    
-
-
 }
 

@@ -165,14 +165,13 @@ class CreateEmailAndPasswordViewController: UIViewController, UITextFieldDelegat
                     print("register error %s", err!)
                     return
                 }
-                //self.performSegue(withIdentifier: self.toGroupList, sender: nil)
             })
             
             let createrUid = FIRAuth.auth()?.currentUser?.uid
             let groupRef = ref.child("groups").childByAutoId()
             
             //ADD group name to groups(:id) child
-            let groupVal = ["name": self.groupName]
+            let groupVal = ["name": self.groupName!]
             groupRef.updateChildValues(groupVal) { (error, ref) in
                 if error != nil {
                     print(error!)

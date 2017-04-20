@@ -304,6 +304,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="h8Q-W1-vLe">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="i5K-oe-Dkk">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -338,16 +343,16 @@
             </objects>
             <point key="canvasLocation" x="2225" y="2195"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Group Members View Controller-->
         <scene sceneID="uI7-37-n1w">
             <objects>
-                <tableViewController id="a2N-Uy-kur" sceneMemberID="viewController">
+                <tableViewController id="a2N-Uy-kur" customClass="GroupMembersViewController" customModule="KitchenCloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gSl-zw-mbe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pfs-wO-1lx">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberCell" id="pfs-wO-1lx" customClass="MemberCell" customModule="KitchenCloud" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pfs-wO-1lx" id="Zxy-0b-WTG">
@@ -361,6 +366,16 @@
                             <outlet property="delegate" destination="a2N-Uy-kur" id="Yhq-g2-8ar"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Qbv-vT-1ed">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CPY-LK-MGN">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addNewMember:" destination="a2N-Uy-kur" id="gDm-6O-lOy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WwW-1D-EHt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -386,12 +401,8 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCI-MZ-mLy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="4EP-eI-8Pm" kind="embed" id="rQx-Ly-Luq"/>
-                                </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aHr-fc-w1f" firstAttribute="top" secondItem="Gen-CM-Dks" secondAttribute="bottom" id="2Ev-am-c5z"/>
                             <constraint firstItem="6oO-Nc-4Pt" firstAttribute="top" secondItem="aHr-fc-w1f" secondAttribute="bottom" id="4hJ-II-TUe"/>
@@ -419,11 +430,6 @@
                                 <segment title="Second"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YBD-w8-hSa">
-                            <connections>
-                                <action selector="createGroup:" destination="rDQ-Jj-91F" id="UlU-ZC-myo"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="segmentControl" destination="g02-oC-DCx" id="AHe-Ch-Tbl"/>
@@ -477,14 +483,14 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="21" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="OCV-Vg-GYD">
                                         <rect key="frame" x="0.0" y="50" width="343" height="50"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -538,7 +544,6 @@
                     <view key="view" contentMode="scaleToFill" id="bkf-GG-G9M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <segue destination="x7N-M9-m6v" kind="show" identifier="toItemList" id="2o7-r6-WdK"/>
@@ -557,14 +562,153 @@
                         <viewControllerLayoutGuide type="bottom" id="qO1-2U-mX6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fUw-ID-UJy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="8aw-7w-s4Q" kind="show" identifier="showRecipe" id="NBz-qa-6MZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZ8-RY-ppT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3058" y="1522"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="5DR-QS-JtB">
+            <objects>
+                <viewController id="8aw-7w-s4Q" customClass="RecipeDetailViewController" customModule="KitchenCloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SRp-K8-bqF"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTi-pA-iJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fGm-xd-HH2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-PQ-Ytt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xrt-gj-rwm">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIi-BQ-ny7" customClass="CustomImageView" customModule="KitchenCloud" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="25" width="343" height="259"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="259" id="1rr-nY-0pb"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az5-WD-uoN">
+                                                <rect key="frame" x="16" y="292" width="343" height="20"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5n-gI-hVb">
+                                                <rect key="frame" x="24" y="317" width="335" height="18"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnF-uf-Qnn">
+                                                <rect key="frame" x="16" y="343" width="343" height="20"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsA-Ce-ty4">
+                                                <rect key="frame" x="24" y="364" width="335" height="30"/>
+                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="15"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" red="0.22498545050621033" green="0.66422730684280396" blue="0.95833283662796021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="SnF-uf-Qnn" firstAttribute="leading" secondItem="Xrt-gj-rwm" secondAttribute="leading" constant="16" id="5iR-oV-JcL"/>
+                                            <constraint firstAttribute="height" constant="1200" id="8KU-K5-p25"/>
+                                            <constraint firstItem="QIi-BQ-ny7" firstAttribute="leading" secondItem="Xrt-gj-rwm" secondAttribute="leading" constant="16" id="9R2-Ke-Xoa"/>
+                                            <constraint firstItem="SnF-uf-Qnn" firstAttribute="top" secondItem="t5n-gI-hVb" secondAttribute="bottom" constant="8" id="B1F-QJ-0V4"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="centerX" secondItem="Xrt-gj-rwm" secondAttribute="centerX" id="FKJ-E3-6RA"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="trailing" secondItem="QIi-BQ-ny7" secondAttribute="trailing" id="Go6-b5-WxB"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="top" secondItem="QIi-BQ-ny7" secondAttribute="bottom" constant="8" id="MNU-dc-lTy"/>
+                                            <constraint firstAttribute="trailing" secondItem="t5n-gI-hVb" secondAttribute="trailing" constant="16" id="QNv-cw-TO5"/>
+                                            <constraint firstAttribute="trailing" secondItem="SnF-uf-Qnn" secondAttribute="trailing" constant="16" id="Wt8-5x-r3L"/>
+                                            <constraint firstItem="QIi-BQ-ny7" firstAttribute="top" secondItem="Xrt-gj-rwm" secondAttribute="top" constant="25" id="Z06-mZ-pL1"/>
+                                            <constraint firstItem="t5n-gI-hVb" firstAttribute="top" secondItem="az5-WD-uoN" secondAttribute="bottom" constant="5" id="ZH2-ic-aLV"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="top" secondItem="QIi-BQ-ny7" secondAttribute="bottom" constant="8" symbolic="YES" id="ZRo-WG-3ZA"/>
+                                            <constraint firstAttribute="trailing" secondItem="QIi-BQ-ny7" secondAttribute="trailing" constant="16" id="b1A-9U-VZo"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="leading" secondItem="QIi-BQ-ny7" secondAttribute="leading" id="dy2-Wr-VT1"/>
+                                            <constraint firstItem="t5n-gI-hVb" firstAttribute="leading" secondItem="Xrt-gj-rwm" secondAttribute="leading" constant="24" id="fRk-vs-4He"/>
+                                            <constraint firstItem="rsA-Ce-ty4" firstAttribute="top" secondItem="SnF-uf-Qnn" secondAttribute="bottom" constant="1" id="iDm-ub-iej"/>
+                                            <constraint firstAttribute="trailing" secondItem="az5-WD-uoN" secondAttribute="trailing" constant="16" id="qPE-Ua-0bq"/>
+                                            <constraint firstAttribute="trailing" secondItem="rsA-Ce-ty4" secondAttribute="trailing" constant="16" id="quC-tO-Wbn"/>
+                                            <constraint firstItem="rsA-Ce-ty4" firstAttribute="leading" secondItem="Xrt-gj-rwm" secondAttribute="leading" constant="24" id="rHg-9u-55M"/>
+                                            <constraint firstItem="az5-WD-uoN" firstAttribute="leading" secondItem="Xrt-gj-rwm" secondAttribute="leading" constant="16" id="tKU-z0-xog"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Xrt-gj-rwm" firstAttribute="top" secondItem="Xfr-PQ-Ytt" secondAttribute="top" id="54U-3N-bfQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xrt-gj-rwm" secondAttribute="trailing" id="AI5-wg-kkV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xrt-gj-rwm" secondAttribute="bottom" id="Fqc-vu-rtl"/>
+                                    <constraint firstItem="Xrt-gj-rwm" firstAttribute="leading" secondItem="Xfr-PQ-Ytt" secondAttribute="leading" id="P6s-Ga-R3p"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xfr-PQ-Ytt" firstAttribute="top" secondItem="fGm-xd-HH2" secondAttribute="top" id="Rot-pm-fIg"/>
+                            <constraint firstAttribute="trailing" secondItem="Xfr-PQ-Ytt" secondAttribute="trailing" id="T5m-Gm-myB"/>
+                            <constraint firstItem="Xrt-gj-rwm" firstAttribute="width" secondItem="fGm-xd-HH2" secondAttribute="width" id="Vjf-q6-SQy"/>
+                            <constraint firstItem="Xfr-PQ-Ytt" firstAttribute="leading" secondItem="fGm-xd-HH2" secondAttribute="leading" id="cYW-al-aaB"/>
+                            <constraint firstAttribute="bottom" secondItem="Xfr-PQ-Ytt" secondAttribute="bottom" id="hSX-lF-rM5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailThumbNail" destination="QIi-BQ-ny7" id="V7M-ze-mpm"/>
+                        <outlet property="ingredientsLabel" destination="t5n-gI-hVb" id="bbB-lf-AuY"/>
+                        <outlet property="publisherUrlButton" destination="rsA-Ce-ty4" id="eTk-Rz-Rcd"/>
+                        <segue destination="XY5-Bc-Ybl" kind="show" identifier="toWebView" id="y5U-zX-5hC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXB-PR-gp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3812" y="1521.5892053973014"/>
+        </scene>
+        <!--Web View Contoller-->
+        <scene sceneID="qqk-O2-Vkq">
+            <objects>
+                <viewController id="XY5-Bc-Ybl" customClass="WebViewContoller" customModule="KitchenCloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rk0-B2-hPI"/>
+                        <viewControllerLayoutGuide type="bottom" id="LAW-Gf-p8i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Db5-7Y-RK8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lOR-Hw-B23">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LAW-Gf-p8i" firstAttribute="top" secondItem="lOR-Hw-B23" secondAttribute="bottom" id="4Gy-aD-62d"/>
+                            <constraint firstAttribute="trailing" secondItem="lOR-Hw-B23" secondAttribute="trailing" id="eFN-dr-7UI"/>
+                            <constraint firstItem="lOR-Hw-B23" firstAttribute="top" secondItem="Db5-7Y-RK8" secondAttribute="top" id="iaL-cb-Zyv"/>
+                            <constraint firstItem="lOR-Hw-B23" firstAttribute="leading" secondItem="Db5-7Y-RK8" secondAttribute="leading" id="kBc-dd-adq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="lOR-Hw-B23" id="iGs-QL-XaI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ggl-nQ-uyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4556" y="1521.5892053973014"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="cZO-Bj-kz4">
@@ -596,7 +740,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -607,21 +751,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9tQ-Wb-xRJ">
                                         <rect key="frame" x="0.0" y="65" width="343" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW9-No-aC0">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="29"/>
-                                                <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zkx-pf-6GT">
-                                                <rect key="frame" x="80" y="0.0" width="94" height="29"/>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Zkx-pf-6GT">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="29"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <action selector="stepperTouched:" destination="UzN-RX-abL" eventType="valueChanged" id="V31-Pz-31m"/>
                                                 </connections>
                                             </stepper>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-hi-9Gc">
-                                                <rect key="frame" x="182" y="0.0" width="65.5" height="29"/>
+                                                <rect key="frame" x="102" y="0.0" width="145.5" height="29"/>
                                                 <color key="backgroundColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -629,28 +767,41 @@
                                             </label>
                                             <label opaque="NO" contentMode="left" text="pcs." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unz-hR-EYh">
                                                 <rect key="frame" x="255.5" y="0.0" width="30.5" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30.5" id="Spb-8n-uKr"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                                 <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lb." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llT-MF-DoE">
                                                 <rect key="frame" x="294" y="0.0" width="19" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="19" id="eb6-YV-6qA"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                                 <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                             <label opaque="NO" contentMode="left" text="oz." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-1R-kIM">
                                                 <rect key="frame" x="321" y="0.0" width="22" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="upl-I2-Cio"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="DroidSans" family="Droid Sans" pointSize="17"/>
                                                 <color key="textColor" red="0.1755622923374176" green="0.53218281269073486" blue="0.76499098539352417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Z1M-hi-9Gc" firstAttribute="leading" secondItem="Zkx-pf-6GT" secondAttribute="trailing" constant="8" id="BLx-De-nR5"/>
+                                            <constraint firstItem="Unz-hR-EYh" firstAttribute="leading" secondItem="Z1M-hi-9Gc" secondAttribute="trailing" constant="8" id="rjK-9G-ees"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-x4-VW7">
                                         <rect key="frame" x="0.0" y="109" width="343" height="200"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" text="Misc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmb-pS-lO4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" text="Misc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmb-pS-lO4">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                                 <color key="backgroundColor" red="0.17556229230000001" green="0.53218281270000001" blue="0.76499098539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>

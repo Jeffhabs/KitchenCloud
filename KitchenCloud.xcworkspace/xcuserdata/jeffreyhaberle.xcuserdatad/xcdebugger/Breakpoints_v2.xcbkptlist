@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KitchenCloud/GroupListContainerVC.swift"
-            timestampString = "513478973.444033"
+            filePath = "KitchenCloud/GroupMembersViewController.swift"
+            timestampString = "514091102.034214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "addNewMember(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KitchenCloud/AddItemViewController.swift"
-            timestampString = "513548845.891007"
+            filePath = "KitchenCloud/GroupMembersViewController.swift"
+            timestampString = "514091102.034214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "addGroceryItem()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "addNewMember(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

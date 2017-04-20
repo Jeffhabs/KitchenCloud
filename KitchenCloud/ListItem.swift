@@ -68,16 +68,12 @@ class ListItem {
 
 // Category is a key value data structure
 // @properties: key: String of category Name, items: list of ListItem objects
-
 class Category {
     
     //key is category name
     var key: String?
     var items: [ListItem]?
-
 }
-
-// Categories = ["Meat & Fish", "Dairy", "Fruits & Veget.", "Produce", "Misc.", "Tinned Food", "Drinks", "Frozen Food", "Houseware", "Baked Goods", "Candies"]
 
 
 

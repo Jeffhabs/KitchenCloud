@@ -17,15 +17,6 @@ class Members {
     var userName: String
     var ref: FIRDatabaseReference?
     
-    /*
-    // Default init
-    init(key: String = " ", email: String, userName: String) {
-        self.key = key
-        self.email = email
-        self.userName = userName
-        self.ref = nil
-    }
-    */
     
     // Snapshot init
     init(snapshot: FIRDataSnapshot) {

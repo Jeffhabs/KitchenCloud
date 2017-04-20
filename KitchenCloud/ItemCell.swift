@@ -51,6 +51,7 @@ class ItemCell: UITableViewCell {
         contentView.addSubview(qtyLabel)
         contentView.addSubview(unitLabel)
         
+        
         itemNameLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
         //itemNameLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         itemNameLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
@@ -65,14 +66,13 @@ class ItemCell: UITableViewCell {
         
         //need x, y, width, height
         qtyLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
-        //qtyLabel.centerXAnchor.constraint(equalTo: itemNameLabel.centerXAnchor, constant: 50).isActive = true
-        qtyLabel.bottomAnchor.constraint(equalTo: addedByLabel.topAnchor).isActive = true
-        qtyLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: -35).isActive = true
+        qtyLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
+        qtyLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor, constant: -25).isActive = true
         
         //need x, y, width, height
         unitLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        unitLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         unitLabel.leadingAnchor.constraint(equalTo: qtyLabel.trailingAnchor).isActive = true
-        unitLabel.bottomAnchor.constraint(equalTo: qtyLabel.bottomAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

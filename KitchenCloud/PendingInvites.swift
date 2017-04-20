@@ -8,7 +8,7 @@
 
 import Firebase
 
-struct PendingInvites {
+class PendingInvites {
     
     let key: String
     let targetEmail: String

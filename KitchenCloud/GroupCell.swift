@@ -17,19 +17,21 @@ class GroupCell: UITableViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()
-    let membersLabel = UILabel()
+    
+    // TODO: Add members or most recent 4-5 items in the list?
+    //let membersLabel = UILabel()
     
     // MARK: Initializers
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
     
-        
         let marginGuide = contentView.layoutMarginsGuide
         contentView.addSubview(groupNameLabel)
         groupNameLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
         groupNameLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         groupNameLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        groupNameLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         groupNameLabel.numberOfLines = 0
         
     }

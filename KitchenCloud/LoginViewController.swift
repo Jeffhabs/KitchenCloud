@@ -20,16 +20,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextDelegates()
-        
-        //Open keyboard on entry
-        emailTextField.becomeFirstResponder()
-        
         //Disable 'Next' button
         self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func setupTextDelegates() {
         emailTextField.delegate = self
+        //Open keyboard on entry
+        emailTextField.becomeFirstResponder()
         passwordTextField.delegate = self
         
         emailTextField.tag = 1
@@ -106,14 +104,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, err) in
             if err != nil {
-                //alert
+                // FIXME: alert if invalid email/password
                 return
             }
             //success
             let currUserId = FIRAuth.auth()?.currentUser?.uid
             let pendingRef = FIRDatabase.database().reference(withPath: "pending-invites")
             
-            
+            // MARK: Pending Invites observer
+            // FIXME: Update this to observe .childAdded and .childRemoved
             pendingRef.observe(.value, with: { (snapshot) in
                 let dict = snapshot.value as? [String: Any] ?? [:]
                 print(dict)
@@ -122,8 +121,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 for item in snapshot.children {
                     let pendingItem = PendingInvites(snapshot: item as! FIRDataSnapshot)
                     newItems.append(pendingItem)
-                    print(item)
-                    
+                    print("pending items: \(item)")                    
                 }
                 
                 // FIXME: Check if child("groups") exist is a child called "groups" in our User collection
@@ -136,54 +134,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     if i.targetEmail == email {
                         
                         //add group<> to currentUser.groups
-                        let test = userGroupRef.child(i.group)
-                        ref.child("groups").child(i.group).observeSingleEvent(of: .value, with: { (snapshot) in
-                            let value = snapshot.value as? [String: Any] ?? [:]
-                            let groupName = value["name"] as? String ?? ""
-                            test.setValue(["name": groupName])
+                        userGroupRef.updateChildValues([i.group: 1], withCompletionBlock: { (err, ref) in
+                            if err != nil {
+                                print("error pending invites")
+                                return
+                            }
+                            // success
                         })
                         
-                        // FIXME: This needs to be updated and fixed with Fanout pattern
                         //we also need to update members in our groups collection
                         //add user<> and user email to members
                         print("Current User Id: \(currUserId!)")
-                        let newMember = ["email": i.targetEmail]
-                        let newGroupMember = ref.child("groups").child(i.group).child("members").child(currUserId!)
-                        newGroupMember.updateChildValues(newMember, withCompletionBlock: { (err, ref) in
+                        //let newMember = ["email": i.targetEmail]
+                        let newGroupMember = ref.child("groups").child(i.group).child("members")
+                        newGroupMember.updateChildValues([currUserId!: 1], withCompletionBlock: { (err, ref) in
                             if err != nil {
-                                print("error updating new group member \(err!)")
-                                return
+                                print("error updating new groups")
                             }
                             //success
                         })
+
                         //finally we need to delete the pending-invite from the collection so we can iterate faster
                         pendingRef.child(i.key).removeValue()
                     }
                 }
                 
-                self.performSegue(withIdentifier: self.toHomeView, sender: nil)
-                
             })
+            self.performSegue(withIdentifier: self.toHomeView, sender: nil)
         })
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let backItem = UIBarButtonItem()
-//        if let font = UIFont(name: "Droid Sans", size: 17) {
-//            backItem.setTitleTextAttributes([NSFontAttributeName: font], for: .normal)
-//            backItem.title = "Logout!"
-//            navigationItem.leftBarButtonItem = backItem
-//        }
-//    }
-//    func handleLogout() {
-//        print("handleLogout called in loginViewController")
-//        do {
-//            try FIRAuth.auth()?.signOut()
-//        } catch let logoutError {
-//            print(logoutError)
-//        }
-//        let loginController = LoginViewController()
-//        present(loginController, animated: true, completion: nil)
-//    }
-
 }
