@@ -30,6 +30,7 @@ class RecipeDetailViewController: UIViewController {
     }
     
     func setupThumbnailImage() {
+        detailThumbNail.dropShadow()
         detailThumbNail.contentMode = .scaleAspectFill
         detailThumbNail.clipsToBounds = true
         if let thumbnailImageUrl = recipe.thumbnailImageName {

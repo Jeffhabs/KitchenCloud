@@ -25,6 +25,7 @@
 		3891A33B1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A33A1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift */; };
 		3891A33D1E8CC0310052D3E9 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891A33C1E8CC0310052D3E9 /* GroupCell.swift */; };
 		38958B081E8F59B900B73B2E /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38958B071E8F59B900B73B2E /* ListItem.swift */; };
+		38B52DF81EA97A1000642EED /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B52DF71EA97A1000642EED /* CollectionViewFooter.swift */; };
 		38B890921E8DC4A6008F6F7A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B890911E8DC4A6008F6F7A /* Groups.swift */; };
 		38BF57721E83330A0097C4C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57711E83330A0097C4C6 /* AppDelegate.swift */; };
 		38BF57741E83330A0097C4C6 /* RegisterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BF57731E83330A0097C4C6 /* RegisterLoginViewController.swift */; };
@@ -62,6 +63,7 @@
 		3891A33A1E8CADBE0052D3E9 /* RecipeCollectionContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionContainerVC.swift; sourceTree = "<group>"; };
 		3891A33C1E8CC0310052D3E9 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		38958B071E8F59B900B73B2E /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		38B52DF71EA97A1000642EED /* CollectionViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
 		38B890911E8DC4A6008F6F7A /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		38BF576E1E83330A0097C4C6 /* KitchenCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38BF57711E83330A0097C4C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				385CC6DF1E9D95E9003B8D1E /* TableSectionHeader.swift */,
 				385CC6E01E9D95E9003B8D1E /* TableSectionHeader.xib */,
 				381D28871EA6A7AC002E368A /* RecipeCell.swift */,
+				38B52DF71EA97A1000642EED /* CollectionViewFooter.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				381523AF1E8F90A0000CD691 /* ItemCell.swift in Sources */,
 				381BBA441E8B63CD00BB7653 /* Members.swift in Sources */,
 				38BF57941E83B6D80097C4C6 /* CreateEmailAndPasswordViewController.swift in Sources */,
+				38B52DF81EA97A1000642EED /* CollectionViewFooter.swift in Sources */,
 				38BF57981E85D38F0097C4C6 /* LoginViewController.swift in Sources */,
 				384E2B701EA891CF004A4958 /* WebViewController.swift in Sources */,
 				385CC6E61E9E8CF9003B8D1E /* MemberCell.swift in Sources */,

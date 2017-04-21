@@ -23,7 +23,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet var segmentControl: UISegmentedControl!
     
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dissmiss(_:)))
     //private var searchBarIsVisible = false
     
     let groupsRef = FIRDatabase.database().reference(withPath: "groups")
@@ -31,6 +30,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     let searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search"
+        sb.tintColor = UIColor.white
         sb.showsCancelButton = true
         return sb
     }()
@@ -68,19 +68,11 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         addChildViewController(viewController)
         
         view.addSubview(viewController.view)
-        //view.addGestureRecognizer(tapGesture)
         
         viewController.view.frame = view.bounds
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         //viewController.didMove(toParentViewController: self)
-    }
-    
-    func dissmiss(_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
-        UIView.animate(withDuration: 0.3) {
-            self.view.alpha = 1
-        }
     }
     
     private func remove(asChildViewController viewController: UIViewController) {
@@ -126,12 +118,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         
     @IBAction func handleLogout(_ sender: Any) {
         print("handleLogout called in HomeViewController")
-        for vc in (self.navigationController?.viewControllers)! {
-            if vc is LoginViewController {
-                _ = self.navigationController?.popToViewController(vc, animated: true)
-            }
-        }
         do {
+            for vc in (self.navigationController?.viewControllers)! {
+                if vc is LoginViewController {
+                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                }
+            }
             try FIRAuth.auth()?.signOut()
         } catch let logoutError {
             print(logoutError)
@@ -206,6 +198,22 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         //print("searching recipe")
     }
     
+    public func disableView() {
+        view.alpha = 1
+        UIView.animate(withDuration: 0.3) { 
+            self.view.alpha = 0.5
+            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = false
+        }
+    }
+    
+    public func enableView() {
+        view.alpha = 0.5
+        UIView.animate(withDuration: 0.3) { 
+            self.view.alpha = 1
+            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = true
+        }
+    }
+    
     func showSearchBar() {
         searchBar.alpha = 0
         view.alpha = 1
@@ -215,6 +223,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         UIView.animate(withDuration: 0.3, animations: {
             self.searchBar.alpha = 1
             self.view.alpha = 0.5
+            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = false
         }, completion: { finished in
             self.searchBar.becomeFirstResponder()
         })
@@ -223,10 +232,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     func hideSearchBar() {
         navigationItem.setLeftBarButton(menuButton, animated: true)
         segmentControl.alpha = 0.0
-        UIView.animate(withDuration: 0.3) {
+        searchBar.placeholder = "Search"
+        UIView.animate(withDuration: 0.7) {
             self.navigationItem.titleView = self.segmentControl
             self.segmentControl.alpha = 1
             self.view.alpha = 1
+            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = true
         }
     }
     
@@ -239,11 +250,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let queryString = searchBar.text else { return }
         //fetchApi
-        recipeCollectionViewContoller.fetchRecipes(hasQuery: queryString)
-        searchBar.resignFirstResponder()
-        
+        recipeCollectionViewContoller.query = queryString
+        recipeCollectionViewContoller.hasQuery = true
+        recipeCollectionViewContoller.fetchRecipes()
+        hideSearchBar()
     }
-        
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGroupList" {
             let dvc = segue.destination as? GroupListContainerVC

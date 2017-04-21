@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:RecipeCollectionViewFooter.swift">
+   </FileRef>
+   <FileRef
       location = "group:KitchenCloud.xcodeproj">
    </FileRef>
    <FileRef

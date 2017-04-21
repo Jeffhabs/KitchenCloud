@@ -26,12 +26,12 @@ class RegisterLoginViewController: UIViewController {
     }
     
     func checkIfUserIsLoggedIn() {
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            //perform(#selector(handleLogout), with: nil, afterDelay: 0)
-            print("no user currently logged in")
-        } else {
-            perform(#selector(handleLoggedIn), with: nil, afterDelay: 0)
+        guard  let uid = FIRAuth.auth()?.currentUser?.uid else {
+            print("No user currently logged in")
+            return
         }
+        print("current user uid: \(uid)")
+        perform(#selector(handleLoggedIn), with: nil, afterDelay: 0)
     }
     
     func handleLoggedIn() {

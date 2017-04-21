@@ -18,6 +18,6 @@ class WebViewContoller: UIViewController {
         
         let url = URL(string: sourceUrl)
         let request = URLRequest(url: url!)
-        webView.loadRequest(request)
+         webView.loadRequest(request)
     }
 }
