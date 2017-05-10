@@ -102,6 +102,7 @@ class GroupListContainerVC: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // call HomeContainer.performSegue(withIdentifier: "", sender: tableView)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toItemList", sender: tableView)
     }

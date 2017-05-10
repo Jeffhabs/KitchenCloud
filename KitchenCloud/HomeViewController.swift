@@ -198,22 +198,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         //print("searching recipe")
     }
     
-    public func disableView() {
-        view.alpha = 1
-        UIView.animate(withDuration: 0.3) { 
-            self.view.alpha = 0.5
-            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = false
-        }
-    }
-    
-    public func enableView() {
-        view.alpha = 0.5
-        UIView.animate(withDuration: 0.3) { 
-            self.view.alpha = 1
-            self.recipeCollectionViewContoller.collectionView.isUserInteractionEnabled = true
-        }
-    }
-    
     func showSearchBar() {
         searchBar.alpha = 0
         view.alpha = 1
@@ -233,7 +217,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         navigationItem.setLeftBarButton(menuButton, animated: true)
         segmentControl.alpha = 0.0
         searchBar.placeholder = "Search"
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 0.3) {
             self.navigationItem.titleView = self.segmentControl
             self.segmentControl.alpha = 1
             self.view.alpha = 1

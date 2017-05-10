@@ -87,7 +87,7 @@ class ItemsListViewController: UITableViewController {
             self.user = userSnap
         }, withCancel: nil)
     }
-    
+    // FIXME: Check if list is nil if it is segue straight to add item
     func observeGroupList() {
         let ref = FIRDatabase.database().reference(withPath: "lists")
         let groupListRef = ref.child(self.groupId!)
@@ -112,7 +112,6 @@ class ItemsListViewController: UITableViewController {
                 }
                 let myArray = Array(tmpData)
                 self.categoryItems = myArray
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

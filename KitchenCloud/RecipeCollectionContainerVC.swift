@@ -17,9 +17,6 @@ class RecipeCollectionContainerVC: UIViewController, UICollectionViewDelegateFlo
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
-    
-    //let homeViewController = HomeViewController()
-    
     let tapGesture = UIGestureRecognizer(target: self, action: #selector(HomeViewController.hideSearchBar))
     
     var hasQuery = Bool()
@@ -76,8 +73,6 @@ class RecipeCollectionContainerVC: UIViewController, UICollectionViewDelegateFlo
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                         self.collectionView.resetScrollPositionToTop()
-                        
-                        
                     }
                 case .failure:
                     print("failed request")
@@ -113,7 +108,6 @@ class RecipeCollectionContainerVC: UIViewController, UICollectionViewDelegateFlo
         //creating view to display lable and indicator
         let loadingView: UIView = UIView()
         loadingView.frame = CGRect(x: 0, y: 0, width: 118, height: 80)
-        //loadingView.frame = CGRectMake(0, 0, 118, 80)
         loadingView.center = self.view.center
         loadingView.backgroundColor =  UIColor.lightGray
         loadingView.clipsToBounds = true
@@ -140,12 +134,11 @@ class RecipeCollectionContainerVC: UIViewController, UICollectionViewDelegateFlo
     
     func stopIndicator()
     {
+        //disables touch events
         UIApplication.shared.endIgnoringInteractionEvents()
-        //UIApplication.shared.endIgnoringInteractionEvents()
         self.activityIndicator.stopAnimating()
+        //first
         self.activityIndicator.superview?.superview?.removeFromSuperview()
-        //self.activityIndicator.removeFromSuperview()
-        //((self.activityIndicator.superview as UIView!).superview as UIView!).removeFromSuperview()
     }
     
     
